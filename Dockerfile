@@ -12,13 +12,13 @@ RUN npm install --only=production
 
 # Set variabel lingkungan
 ENV NODE_ENV production
-ENV PORT 5000
+ENV PORT 8080
 
 # Copy semua file sumber
 COPY . .
 
 # Ekspose port yang digunakan
-EXPOSE 5000
+EXPOSE 8080
 
 # Jalankan aplikasi
 CMD [ "npm", "run", "start-prod" ]
