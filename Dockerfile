@@ -8,9 +8,11 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependensi hanya untuk production
-RUN npm install
+RUN npm install --only=production
 
 # Set variabel lingkungan
+ENV MODEL_URL https://storage.cloud.google.com/ml-cloud_run/model-in-prod/model.json
+ENV NODE_ENV production
 ENV PORT 3000
 
 # Copy semua file sumber
