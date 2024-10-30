@@ -8,10 +8,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependensi hanya untuk production
-RUN npm install --only=production
+RUN npm install
 
 # Set variabel lingkungan
-ENV NODE_ENV production
 ENV PORT 3000
 
 # Copy semua file sumber
