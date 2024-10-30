@@ -20,4 +20,4 @@ EXPOSE $PORT
 COPY . .
 
 # Use the PORT environment variable in the start script
-CMD [ "node", "index.js" ]
+CMD [ "node", "src/index.js" ]
