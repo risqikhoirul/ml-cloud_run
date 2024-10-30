@@ -1,25 +1,23 @@
-# Menggunakan Node.js 18
 FROM node:18
 
 # Set direktori kerja
 WORKDIR /usr/src/app
 
-# Copy package.json dan package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependensi hanya untuk production
+# Install dependencies only for production
 RUN npm install --only=production
 
-# Set variabel lingkungan
+# Set environment variables
 ENV MODEL_URL https://storage.cloud.google.com/ml-cloud_run/model-in-prod/model.json
 ENV NODE_ENV production
-ENV PORT 3000
 
-# Copy semua file sumber
+# Expose the port defined by Cloud Run (use $PORT)
+EXPOSE $PORT
+
+# Copy all source files
 COPY . .
 
-# Ekspose port yang digunakan
-EXPOSE 3000
-
-# Jalankan aplikasi
-CMD [ "npm", "run", "start" ]
+# Use the PORT environment variable in the start script
+CMD [ "node", "index.js" ]
