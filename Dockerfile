@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install --only=production
 
 # Set environment variables
-ENV MODEL_URL https://storage.cloud.google.com/ml-cloud_run/model-in-prod/model.json
+ENV MODEL_URL https://storage.googleapis.com/ml-cloud_run/model-in-prod/model.json
 ENV NODE_ENV production
 
 # Expose the port defined by Cloud Run (use $PORT)

@@ -1,7 +1,7 @@
 const tfjs = require("@tensorflow/tfjs-node");
 function loadModel() {
-  // const modelUrl = "https://storage.cloud.google.com/ml-cloud_run/model-in-prod/model.json";
-  return tfjs.loadGraphModel(process.env.MODEL_URL);
+  const modelUrl = process.env.MODEL_URL;
+  return tfjs.loadLayersModel(modelUrl);
 }
 
 function predict(model, imageBuffer) {
