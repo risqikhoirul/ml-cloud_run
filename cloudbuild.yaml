@@ -26,7 +26,4 @@ steps:
 images:
   - "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA"
 
-# Options (tambahkan logsBucket sesuai dengan nama bucket kamu)
-options:
-  logging: CLOUD_LOGGING_ONLY # atau NONE jika tidak memerlukan logging di Cloud Logging
-  logsBucket: gs://ml-cloud_run/log_cloudbuild_ml_test # Menyimpan log build ke bucket ini
+logsBucket: "gs://ml-cloud_run/log_cloudbuild_ml_test" # Menyimpan log build ke bucket ini
