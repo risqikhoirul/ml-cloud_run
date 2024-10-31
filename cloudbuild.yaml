@@ -1,0 +1,28 @@
+# cloudbuild.yaml
+
+steps:
+  # Step 1: Build Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA", "."]
+
+  # Step 2: Push Docker image to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA"]
+
+  # Step 3: Deploy image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "notes-api"
+      - "--image"
+      - "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA"
+      - "--platform"
+      - "managed"
+      - "--region"
+      - "asia-southeast2"
+      - "--allow-unauthenticated"
+
+images:
+  - "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA"
