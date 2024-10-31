@@ -12,6 +12,14 @@ const { loadModel, predict } = require("./inference");
   });
 
   server.route({
+    method: "GET",
+    path: "/test",
+    handler: async () => {
+      return { test: "bangkit" };
+    },
+  });
+
+  server.route({
     method: "POST",
     path: "/predicts",
     handler: async (request) => {
