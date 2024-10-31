@@ -21,7 +21,6 @@ steps:
       - "--region"
       - "asia-southeast2"
       - "--allow-unauthenticated"
-      - "--service-account=YOUR_SERVICE_ACCOUNT"
 
 images:
   - "asia-southeast2-docker.pkg.dev/$PROJECT_ID/mlcloudrun/api-ml:$SHORT_SHA"
