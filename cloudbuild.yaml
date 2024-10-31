@@ -1,5 +1,3 @@
-# cloudbuild.yaml
-
 steps:
   # Step 1: Build Docker image
   - name: "gcr.io/cloud-builders/docker"
@@ -23,6 +21,12 @@ steps:
       - "--region"
       - "asia-southeast2"
       - "--allow-unauthenticated"
+      - "--service-account=YOUR_SERVICE_ACCOUNT"
 
 images:
   - "asia-southeast2-docker.pkg.dev/$PROJECT_ID/cloudruntest/api-ml:$SHORT_SHA"
+
+# Options (tambahkan logsBucket sesuai dengan nama bucket kamu)
+options:
+  logging: CLOUD_LOGGING_ONLY # atau NONE jika tidak memerlukan logging di Cloud Logging
+  logsBucket: gs://ml-cloud_run/log_cloudbuild_ml_test # Menyimpan log build ke bucket ini
